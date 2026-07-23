@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="page-title">Article — EcoTrendDaily</title>
+  <meta name="description" id="page-desc" content="">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="header-mount"></div>
+
+<!-- Advertisement: Below Header -->
+<div class="ad-slot ad-slot--top">
+  <div class="container">
+    <div class="ad-container" onclick="window.location.href='https://ultahost.com';" style="display:flex; align-items:center; justify-content:space-between; width:728px; height:90px; margin:0 auto; background:#ffffff; border:1px solid #ddd; padding:8px 12px; border-radius:4px; gap:12px; cursor:pointer; box-sizing:border-box; overflow:hidden;">
+
+  <img src="https://miro.medium.com/v2/1*Pe_R9-iUhnW7NnlscyM8kg.jpeg"
+       style="width:160px; height:74px; object-fit:cover; border-radius:4px; flex-shrink:0;">
+
+  <div style="flex:1; overflow:hidden;">
+    <div style="font-weight:bold; font-size:20px; color:#333;">Ultahost: Premium Hosting</div>
+    <div style="font-size:15px; color:#666;">Blazing fast speed and 24/7 support.</div>
+  </div>
+
+  <div style="background:#0056b3; color:#fff; padding:10px 18px; border-radius:20px; font-weight:bold; font-size:14px; white-space:nowrap; flex-shrink:0;">
+    Get Started →
+  </div>
+
+</div>
+  </div>
+</div>
+
+<main>
+  <div id="articleContainer">
+    <!-- Injected by JS -->
+  </div>
+</main>
+
+<!-- Advertisement: Above Footer -->
+<div class="ad-slot ad-slot--bottom">
+  <div class="container">
+   <div class="ad-container" onclick="window.location.href='https://www.spotify.com';" style="display:flex; align-items:center; justify-content:space-between; width:970px; height:90px; margin:0 auto; background:#191414; color:#fff; padding:8px 16px; border-radius:4px; gap:16px; cursor:pointer; box-sizing:border-box; overflow:hidden;">
+
+  <img src="https://images.unsplash.com/photo-1581315628079-f093bb040803?w=300"
+       style="width:74px; height:74px; object-fit:cover; border-radius:4px; flex-shrink:0;">
+
+  <div style="flex:1; overflow:hidden;">
+    <div style="color:#1DB954; font-weight:bold; font-size:22px;">
+      Spotify
+    </div>
+    <div style="font-size:16px; font-weight:bold; color:#fff;">
+      Music for everyone.
+    </div>
+  </div>
+
+  <div style="background:#1DB954; color:#000; padding:10px 22px; border-radius:20px; font-weight:bold; font-size:15px; white-space:nowrap; flex-shrink:0;">
+    Play Free →
+  </div>
+
+</div>
+  </div>
+</div>
+
+<div id="footer-mount"></div>
+<div id="modal-mount"></div>
+<div id="cookie-mount"></div>
+
+<script src="data/blogs-data.js"></script>
+<script src="js/components.js"></script>
+<script src="js/main.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const params = new URLSearchParams(window.location.search);
+  const slug = params.get('slug');
+  const blog = BLOGS.find(b => b.slug === slug);
+  const container = document.getElementById('articleContainer');
+
+  if (!blog) {
+    container.innerHTML = `
+      <div style="text-align:center;padding:100px 24px">
+        <div style="font-size:3rem;margin-bottom:16px">🌍</div>
+        <h1 style="font-family:var(--serif);font-size:2rem;margin-bottom:16px">Article Not Found</h1>
+        <p style="font-family:var(--body-serif);color:var(--charcoal);margin-bottom:28px">The article you're looking for doesn't exist or may have been moved.</p>
+        <a href="blog.html" class="btn btn--primary">Browse All Articles</a>
+      </div>`;
+    return;
+  }
+
+  document.title = `${blog.title} — EcoTrendDaily`;
+  document.getElementById('page-desc').content = blog.excerpt;
+
+  const related = BLOGS.filter(b => b.id !== blog.id).slice(0, 2);
+
+  container.innerHTML = `
+    <div class="article-full">
+      <div class="article-layout">
+        <div class="article-main">
+          <div class="article-header">
+            <span class="category-tag">${blog.category}</span>
+            <h1>${blog.title}</h1>
+            <p class="hero-subtitle">${blog.subtitle}</p>
+            <div class="article-meta">
+              <span class="author">${blog.author}</span>
+              <span class="divider">—</span>
+              <span>${blog.authorRole}</span>
+              <span class="divider">|</span>
+              <span>${blog.date}</span>
+              <span class="divider">|</span>
+              <span>${blog.readTime}</span>
+            </div>
+          </div>
+
+          <div class="article-hero-image">
+            <img src="${blog.image}" alt="${blog.title}">
+          </div>
+
+          <div class="article-body">
+            ${blog.content}
+          </div>
+
+          <div class="article-tags">
+            <span class="tag-label">Topics:</span>
+            ${blog.tags.map(t => `<span class="tag-pill">${t}</span>`).join('')}
+          </div>
+
+          ${related.length ? `
+          <div style="max-width:680px;margin:56px auto 0;padding:0 24px">
+            <div style="border-top:3px solid var(--black);padding-top:24px;margin-bottom:28px">
+              <h3 style="font-family:var(--sans);font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;color:var(--gray-mid)">Continue Reading</h3>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px">
+              ${related.map(r => `
+                <div style="border-top:2px solid var(--black);padding-top:16px">
+                  <span class="category-tag" style="margin-bottom:10px;display:inline-block">${r.category}</span>
+                  <h4 style="font-family:var(--serif);font-size:1.05rem;line-height:1.3;margin-bottom:8px">
+                    <a href="blog-post.html?slug=${r.slug}" style="transition:color 0.2s" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='inherit'">${r.title}</a>
+                  </h4>
+                  <div style="font-family:var(--sans);font-size:0.72rem;color:var(--gray-mid)">${r.date} · ${r.readTime}</div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+          ` : ''}
+
+          <div style="max-width:680px;margin:48px auto;padding:28px 24px;border-top:3px solid var(--black);border-bottom:3px solid var(--black);text-align:center">
+            <p style="font-family:var(--serif);font-size:1.1rem;font-style:italic;margin-bottom:16px">Have thoughts on this article? We welcome corrections, tips, and reader responses.</p>
+            <button class="btn btn--primary" data-modal="contact">Write to the Editors</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+});
+</script>
+</body>
+</html>

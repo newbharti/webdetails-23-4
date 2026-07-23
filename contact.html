@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — EcoTrendDaily</title>
+  <meta name="description" content="Contact the EcoTrendDaily editorial team. We welcome story tips, corrections, reader questions, and partnership inquiries.">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="header-mount"></div>
+
+<div class="page-header">
+  <div class="container">
+    <div class="page-label">Get In Touch</div>
+    <h1>Contact EcoTrendDaily</h1>
+    <p>Our team reads every message. We respond within two business days.</p>
+  </div>
+</div>
+
+<main>
+  <div class="container">
+    <div class="contact-layout">
+
+      <div class="contact-info">
+        <h2>Reach Our Newsroom</h2>
+        <p>Whether you have a story tip, a factual correction, a question about our coverage, or a partnership inquiry, we want to hear from you. EcoTrendDaily is committed to accountability and reader engagement as core parts of our editorial mission.</p>
+
+        <div style="margin:28px 0">
+          <div class="contact-detail">
+            <div class="contact-detail-icon">✉️</div>
+            <div class="contact-detail-text">
+              <strong>General & Editorial</strong>
+              <a href="mailto:info@ecotrenddaily.com" style="color:#D4AF37">info@ecotrenddaily.com</a>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">🛠️</div>
+            <div class="contact-detail-text">
+              <strong>Help & Support</strong>
+              <a href="mailto:help@ecotrenddaily.com" style="color:#D4AF37">help@ecotrenddaily.com</a>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <div class="contact-detail-icon">🕐</div>
+            <div class="contact-detail-text">
+              <strong>Response Time</strong>
+              <span>Within 2 business days (EST)</span>
+            </div>
+          </div>
+        </div>
+
+        <h2 style="margin-top:2em">What We Can Help With</h2>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:1em">
+          <li style="font-family:var(--body-serif);font-size:1rem;display:flex;gap:10px;align-items:flex-start"><span style="color:var(--accent);font-weight:700">→</span> Story tips and leads on geography or climate topics</li>
+          <li style="font-family:var(--body-serif);font-size:1rem;display:flex;gap:10px;align-items:flex-start"><span style="color:var(--accent);font-weight:700">→</span> Factual corrections or clarifications to published articles</li>
+          <li style="font-family:var(--body-serif);font-size:1rem;display:flex;gap:10px;align-items:flex-start"><span style="color:var(--accent);font-weight:700">→</span> Inquiries about editorial contributions or op-eds</li>
+          <li style="font-family:var(--body-serif);font-size:1rem;display:flex;gap:10px;align-items:flex-start"><span style="color:var(--accent);font-weight:700">→</span> Media and press inquiries</li>
+          <li style="font-family:var(--body-serif);font-size:1rem;display:flex;gap:10px;align-items:flex-start"><span style="color:var(--accent);font-weight:700">→</span> Educational or institutional partnerships</li>
+          <li style="font-family:var(--body-serif);font-size:1rem;display:flex;gap:10px;align-items:flex-start"><span style="color:var(--accent);font-weight:700">→</span> Reader questions about our coverage or methods</li>
+        </ul>
+      </div>
+
+      <!-- Inline contact form (separate from modal) -->
+      <div>
+        <div style="border:3px solid var(--black);padding:32px">
+          <h3 style="font-family:var(--serif);font-size:1.3rem;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--gray-pale)">Send Us a Message</h3>
+          <form id="pageContactForm">
+            <div class="form-group">
+              <label for="pc-name">Full Name *</label>
+              <input type="text" id="pc-name" required placeholder="Your name">
+            </div>
+            <div class="form-group">
+              <label for="pc-email">Email Address *</label>
+              <input type="email" id="pc-email" required placeholder="you@example.com">
+            </div>
+            <div class="form-group">
+              <label for="pc-subject">Subject *</label>
+              <select id="pc-subject" required>
+                <option value="">Select a subject</option>
+                <option>General Inquiry</option>
+                <option>Story Tip or Suggestion</option>
+                <option>Editorial Feedback</option>
+                <option>Factual Correction</option>
+                <option>Partnership or Media</option>
+                <option>Technical Support</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="pc-message">Message *</label>
+              <textarea id="pc-message" required placeholder="Tell us what's on your mind..." style="min-height:130px"></textarea>
+            </div>
+            <div class="form-check">
+              <input type="checkbox" id="pc-agree" required>
+              <label for="pc-agree">I agree to the <a href="privacy-policy.html">Privacy Policy</a>, <a href="terms.html">Terms & Conditions</a>, and <a href="disclaimer.html">Disclaimer</a>. *</label>
+            </div>
+            <button type="submit" class="btn btn--primary" style="width:100%;padding:14px">Send Message</button>
+          </form>
+          <div id="pageFormSuccess" style="display:none;text-align:center;padding:32px 0">
+            <div style="font-size:2.5rem;margin-bottom:12px">✓</div>
+            <h4 style="font-family:var(--serif);font-size:1.3rem;margin-bottom:8px">Message Received</h4>
+            <p style="font-family:var(--body-serif);color:var(--charcoal);font-style:italic">Thank you. Our editorial team will respond within 2 business days.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<div id="footer-mount"></div>
+<div id="modal-mount"></div>
+<div id="cookie-mount"></div>
+
+<script src="js/components.js"></script>
+<script src="js/main.js"></script>
+<script>
+document.getElementById('pageContactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const agreed = document.getElementById('pc-agree');
+  if (!agreed.checked) {
+    alert('Please agree to our Privacy Policy, Terms & Conditions, and Disclaimer to proceed.');
+    return;
+  }
+  this.style.display = 'none';
+  document.getElementById('pageFormSuccess').style.display = 'block';
+});
+</script>
+</body>
+</html>

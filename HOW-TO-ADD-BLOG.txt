@@ -1,0 +1,229 @@
+==============================================================
+  ECOTRENDAILY — HOW TO ADD A NEW BLOG POST
+  Complete Step-by-Step Guide
+==============================================================
+
+OVERVIEW
+--------
+All blog content lives in a single file: data/blogs-data.js
+
+You never need to edit any HTML page to publish a new article.
+Just add a new object to the BLOGS array and you're done.
+The blog listing page (blog.html), homepage (index.html),
+and article detail page (blog-post.html) will all update
+automatically.
+
+
+STEP 1: OPEN THE DATA FILE
+---------------------------
+Open: data/blogs-data.js
+
+You'll see the BLOGS array at the top. It looks like this:
+
+  const BLOGS = [
+    { ... blog 1 ... },
+    { ... blog 2 ... },
+    { ... blog 3 ... }
+  ];
+
+Add your new blog as an object INSIDE this array.
+
+
+STEP 2: COPY THIS TEMPLATE
+----------------------------
+Copy and paste this template as a new object in the BLOGS array.
+Add it at the top (after the opening bracket) to make it appear
+first, or at the bottom to make it appear last.
+
+  {
+    id: 4,
+    slug: "your-url-slug-here",
+    title: "Your Full Article Title Here",
+    subtitle: "A one or two sentence subtitle that summarizes the article and appears below the headline.",
+    category: "Climate",
+    author: "Author Full Name",
+    authorRole: "Job Title or Role",
+    date: "April 25, 2026",
+    readTime: "7 min read",
+    featured: false,
+    image: "https://images.unsplash.com/photo-XXXXXX?w=1200&q=80",
+    thumbnail: "https://images.unsplash.com/photo-XXXXXX?w=600&q=80",
+    excerpt: "A 1-2 sentence summary of the article. This appears on the blog listing page and homepage cards.",
+    tags: ["Tag One", "Tag Two", "Tag Three"],
+    content: `
+      <p class="article-lead">This is the first paragraph. It will appear with a red left border, styled as the article lead/lede. Use it for your opening hook.</p>
+
+      <p>This is a regular paragraph. Write your article content here using standard HTML paragraph tags.</p>
+
+      <h2>Section Heading</h2>
+
+      <p>Add as many paragraphs and sections as you need.</p>
+
+      <blockquote>
+        <p>"Add pull quotes like this." — Source Name, Title</p>
+      </blockquote>
+
+      <p>Continue your article here...</p>
+    `
+  },
+
+
+STEP 3: FILL IN EACH FIELD
+----------------------------
+
+REQUIRED FIELDS:
+
+  id          → A unique integer. If you have 3 blogs (ids 1, 2, 3),
+                your new blog should be id: 4. Never reuse an id.
+
+  slug        → The URL-friendly name for this article. Use only
+                lowercase letters, numbers, and hyphens. No spaces.
+                Example: "arctic-ice-melt-2026"
+                The article will be accessible at:
+                blog-post.html?slug=arctic-ice-melt-2026
+
+  title       → The full headline of the article. Keep it descriptive
+                and specific.
+
+  subtitle    → A supporting sentence or two that expands the headline.
+                Appears in italics below the title.
+
+  category    → Must match one of the categories in BLOG_CATEGORIES
+                (at the bottom of blogs-data.js):
+                "Climate", "Oceans", "Geography", "Weather", "Science"
+                Or add a new category to BLOG_CATEGORIES.
+
+  author      → Writer's full name.
+
+  authorRole  → The writer's title (e.g., "Science Correspondent").
+
+  date        → Publication date as a string: "April 25, 2026"
+
+  readTime    → Estimated reading time: "8 min read"
+
+  featured    → Set to true to make this the big hero article on the
+                homepage. Only ONE article should have featured: true
+                at a time. Set all others to false.
+
+  image       → Full URL of the hero image (large). Recommended size:
+                1200px wide. Use Unsplash, your own CDN, or any
+                public image URL.
+                Example: https://images.unsplash.com/photo-XXXXXX?w=1200&q=80
+
+  thumbnail   → Smaller version of the same image for cards.
+                Example: https://images.unsplash.com/photo-XXXXXX?w=600&q=80
+                (Same URL, just change w=1200 to w=600)
+
+  excerpt     → 1-2 sentence summary for article cards and meta tags.
+                Keep under 200 characters.
+
+  tags        → Array of topic tags. 3-6 tags recommended.
+                Example: ["Arctic", "Ice", "Climate", "Polar"]
+
+  content     → The full article body as an HTML string wrapped in
+                backticks (`...`). See formatting guide below.
+
+
+STEP 4: CONTENT FORMATTING GUIDE
+----------------------------------
+Inside the content field, use these HTML elements:
+
+  <p class="article-lead">...</p>
+    → Use ONCE at the top for your opening paragraph.
+      Styled with red left border.
+
+  <p>...</p>
+    → Standard body paragraphs.
+
+  <h2>Section Title</h2>
+    → Section headings. Use for major topic shifts.
+
+  <blockquote>
+    <p>"Quote text here." — Name, Title</p>
+  </blockquote>
+    → Pull quotes or expert citations.
+
+  <strong>bold text</strong>
+    → For emphasis within paragraphs.
+
+  <em>italic text</em>
+    → For emphasis or titles.
+
+
+STEP 5: ADD A NEW CATEGORY (optional)
+---------------------------------------
+If your article has a category not in the list, add it to
+BLOG_CATEGORIES at the bottom of blogs-data.js:
+
+  const BLOG_CATEGORIES = ["All", "Climate", "Oceans", "Geography", "Weather", "Science", "YourNewCategory"];
+
+This will make it appear as a filter button on blog.html.
+
+
+STEP 6: SAVE AND TEST
+-----------------------
+1. Save data/blogs-data.js
+2. Open index.html in a browser
+3. Your article should appear in the articles grid
+4. Open blog.html — it should appear with the correct category filter
+5. Click the article card — it should open blog-post.html with your content
+
+
+STEP 7: SET AS FEATURED (optional)
+-------------------------------------
+To make your new article the big hero on the homepage:
+1. Find the current featured article in BLOGS
+2. Change its  featured: true  to  featured: false
+3. Set your new article's  featured: true
+
+
+COMMON MISTAKES TO AVOID
+--------------------------
+× Don't duplicate ids — each blog needs a unique integer id.
+× Don't use spaces in slugs — use-hyphens-instead.
+× Don't add two featured: true articles — only one can be featured.
+× Don't forget to close your HTML tags in the content field.
+× Don't use double quotes (") inside the content string —
+  use HTML entities (&ldquo; &rdquo;) or single quotes,
+  since the content is wrapped in backticks.
+× Don't forget the trailing comma after each blog object,
+  EXCEPT the last one in the array.
+
+
+EXAMPLE: COMPLETE MINIMAL BLOG ENTRY
+---------------------------------------
+{
+  id: 4,
+  slug: "amazon-rainfall-shift",
+  title: "The Amazon's Rainy Season Is Shrinking",
+  subtitle: "New measurements from weather stations across the basin document a consistent shortening of the wet season, with implications for the forest's long-term stability.",
+  category: "Climate",
+  author: "Sarah Chen",
+  authorRole: "Environment Correspondent",
+  date: "April 25, 2026",
+  readTime: "6 min read",
+  featured: false,
+  image: "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=1200&q=80",
+  thumbnail: "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=600&q=80",
+  excerpt: "Across the Amazon basin, the rainy season has shortened by an average of three weeks since 1980. Scientists are watching closely.",
+  tags: ["Amazon", "Rainfall", "Deforestation", "South America"],
+  content: `
+    <p class="article-lead">The Amazon rainforest depends on rain. That fact is so obvious it barely seems worth stating — until you look at what is happening to the Amazon's rainy season, and realize that what was once a reliable rhythm is now a shortening window.</p>
+
+    <p>New analysis of data from 127 weather stations distributed across the Amazon basin shows that the average length of the wet season has shortened by approximately three weeks since reliable measurements began in 1980. The finding, published last month in the journal Global Change Biology, confirms a pattern that regional meteorologists and forest scientists had been observing anecdotally for years.</p>
+
+    <h2>What Is Changing</h2>
+
+    <p>The Amazon's annual cycle has historically been governed by a reliable alternation between wet and dry seasons. The wet season, when the forest receives the bulk of its annual precipitation, typically ran from November through April across much of the basin.</p>
+  `
+}
+
+
+NEED HELP?
+-----------
+Email: help@ecotrenddaily.com
+For editorial questions: info@ecotrenddaily.com
+
+EcoTrendDaily · 1317 F Street NW, Suite 600 · Washington, DC 20004 · USA
+
+==============================================================
